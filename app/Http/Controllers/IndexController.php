@@ -19,7 +19,10 @@ class IndexController extends Controller
         $services = Service::where('id', '<', 20)->get();
         $peoples = People::take(3)->get();
 
-        dd($pages);
+        dd($portfolios); // тестирование
+//        dd($pages);
+//        dd($services);
+//        dd($peoples);
 
         $menu = array();
         foreach ($pages as $page) {
