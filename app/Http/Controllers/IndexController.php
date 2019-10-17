@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Models\People;
 use App\Models\Portfolio;
 use App\Models\Service;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -17,6 +18,12 @@ class IndexController extends Controller
         $portfolios = Portfolio::get(array('name', 'filter', 'images'));
         $services = Service::where('id', '<', 20)->get();
         $peoples = People::take(3)->get();
+
+        // отображение фильтров в разделе Portfolio
+        // для выборки уникальных значений используется метод distinct(), тк элементы дублируются
+        $tags = DB::table('portfolios')->distinct()->pluck('filter');
+
+        dd($tags);
 
         $menu = array();
 
