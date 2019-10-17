@@ -20,13 +20,7 @@
 </head>
 <body>
 
-<!--Header_section-->
-<header id="header_wrapper">
-    @yield('header')
-</header>
-<!--Header_section-->
-
-<!--Hero_Section-->
+@yield('header')
 
 @yield('content')
 
