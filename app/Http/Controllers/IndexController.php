@@ -37,6 +37,7 @@ class IndexController extends Controller
         $item = array('title' => 'Contact', 'alias' => 'contact');
         array_push($menu, $item);
 
+        // передача переменных виду
         return view('site.index', array(
             'menu' => $menu,
             'pages' => $pages,
