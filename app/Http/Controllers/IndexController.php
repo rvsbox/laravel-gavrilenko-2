@@ -20,8 +20,11 @@ class IndexController extends Controller
 
         $menu = array();
         foreach ($pages as $page) {
-
+            $item = array('title' => $page->name, 'alias' => $page->alias);
+            array_push($menu, $item);
         }
+
+        dd($menu);
 
         return view('site.index');
     }
