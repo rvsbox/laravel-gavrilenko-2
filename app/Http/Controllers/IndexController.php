@@ -23,8 +23,6 @@ class IndexController extends Controller
         // для выборки уникальных значений используется метод distinct(), тк элементы дублируются
         $tags = DB::table('portfolios')->distinct()->pluck('filter');
 
-        dd($tags);
-
         $menu = array();
 
         foreach ($pages as $page) {
@@ -51,6 +49,7 @@ class IndexController extends Controller
             'services' => $services,
             'portfolios' => $portfolios,
             'peoples' => $peoples,
+            'tags'=>$tags
         ));
     }
 }

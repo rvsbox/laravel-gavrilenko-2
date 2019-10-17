@@ -118,17 +118,17 @@
         <!-- Portfolio Filters -->
         <div class="portfolio">
 
+            <!-- отображение фильтров -->
             @if(isset($tags))
+
                 <div id="filters" class="sixteen columns">
                     <ul class="clearfix">
-                        <li><a id="all" href="#" data-filter="*" class="active">
-                                <h5>All</h5></a></li>
+                        <li><a id="all" href="#" data-filter="*" class="active"><h5>All</h5></a></li>
 
+                        <!-- отображение каждого значения из графы filter таблицы portfolios -->
                         @foreach($tags as $tag)
 
-                            <li><a class="" href="#" data-filter=".{{$tag}}">
-                                    <h5>{{$tag}}</h5>
-                                </a></li>
+                            <li><a class="" href="#" data-filter=".{{$tag}}"><h5>{{$tag}}</h5></a></li>
 
                         @endforeach
 
@@ -139,24 +139,24 @@
         @endif
 
         <!-- Portfolio Wrapper -->
-            <div class="isotope fadeInLeft animated wow" style="position: relative; overflow: hidden; height: 480px;"
+        <div class="isotope fadeInLeft animated wow" style="position: relative; overflow: hidden; height: 480px;"
                  id="portfolio_wrapper">
 
             @foreach($portfolios as $item)
 
                 <!-- Portfolio Item -->
-                    <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
-                         class="portfolio-item one-four   {{ $item->filter }} isotope-item">
-                        <div class="portfolio_img"> {{ Html::image('assets/img/'.$item->images,$item->name)}} </div>
-                        <div class="item_overlay">
-                            <div class="item_info">
-                                <h4 class="project_name">{{ $item->name }}</h4>
-                            </div>
+                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
+                     class="portfolio-item one-four   {{ $item->filter }} isotope-item">
+                    <div class="portfolio_img"> {{ Html::image('assets/img/'.$item->images,$item->name)}} </div>
+                    <div class="item_overlay">
+                        <div class="item_info">
+                            <h4 class="project_name">{{ $item->name }}</h4>
                         </div>
                     </div>
-                    <!--/Portfolio Item -->
+                </div>
+                <!--/Portfolio Item -->
 
-                @endforeach
+            @endforeach
 
             </div>
             <!--/Portfolio Wrapper -->
