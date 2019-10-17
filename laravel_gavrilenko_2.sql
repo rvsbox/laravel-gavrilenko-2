@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 16, 2019 at 11:31 PM
+-- Generation Time: Oct 17, 2019 at 07:59 PM
 -- Server version: 5.7.25
 -- PHP Version: 7.2.10
 
@@ -67,8 +67,8 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `name`, `alias`, `text`, `images`, `created_at`, `updated_at`) VALUES
-(1, 'home', 'home', '<h2>We create <strong>awesome</strong> web templates</h2>\r\n              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text  printer took a galley of type and scrambled it to make a type specimen.</p>', '', NULL, NULL),
-(2, 'about us', 'aboutUs', '<h3>Lorem Ipsum has been the industry\'s standard dummy text ever..</h3>\r\n<br>\r\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.PageMaker including versions of Lorem Ipsum.</p>\r\n<br>\r\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged like Aldus PageMaker including versions of Lorem Ipsum.</p>', '', NULL, NULL);
+(1, 'home', 'home', '<h2>We create <strong>awesome</strong> web templates</h2>\r\n              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text  printer took a galley of type and scrambled it to make a type specimen.</p>', 'main_device_image.png', NULL, NULL),
+(2, 'about us', 'aboutUs', '<h3>Lorem Ipsum has been the industry\'s standard dummy text ever..</h3>\r\n<br>\r\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.PageMaker including versions of Lorem Ipsum.</p>\r\n<br>\r\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged like Aldus PageMaker including versions of Lorem Ipsum.</p>', 'about-img.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -103,9 +103,9 @@ CREATE TABLE `peoples` (
 --
 
 INSERT INTO `peoples` (`id`, `name`, `position`, `images`, `text`, `created_at`, `updated_at`) VALUES
-(1, 'Tom Rensed', 'Chief Executive Officer', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.', NULL, NULL),
-(2, 'Kathren Mory', 'Vice President', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.', NULL, NULL),
-(3, 'Lancer Jack', 'Senior Manager', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.', NULL, NULL);
+(1, 'Tom Rensed', 'Chief Executive Officer', 'team_pic1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.', NULL, NULL),
+(2, 'Kathren Mory', 'Vice President', 'team_pic2.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.', NULL, NULL),
+(3, 'Lancer Jack', 'Senior Manager', 'team_pic3.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,13 +127,13 @@ CREATE TABLE `portfolios` (
 --
 
 INSERT INTO `portfolios` (`id`, `name`, `images`, `filter`, `created_at`, `updated_at`) VALUES
-(1, 'Finance App', '', 'GPS ', NULL, NULL),
-(2, 'Concept', '', 'design ', NULL, NULL),
-(3, 'Shopping', '', 'android ', NULL, NULL),
-(4, 'Managment ', '', 'design ', NULL, NULL),
-(5, 'iPhone 	', '', 'web ', NULL, NULL),
-(6, 'Phone ', '', 'web', NULL, NULL),
-(7, 'Android ', '', 'android', NULL, NULL);
+(1, 'Finance App', 'portfolio_pic2.jpg ', 'GPS ', NULL, NULL),
+(2, 'Concept', 'portfolio_pic3.jpg ', 'design ', NULL, NULL),
+(3, 'Shopping', 'portfolio_pic4.jpg', 'android ', NULL, NULL),
+(4, 'Managment ', 'portfolio_pic5.jpg ', 'design ', NULL, NULL),
+(5, 'iPhone 	', 'portfolio_pic6.jpg ', 'web ', NULL, NULL),
+(6, 'Nexus Phone ', 'portfolio_pic7.jpg ', 'web', NULL, NULL),
+(7, 'Android ', 'portfolio_pic8.jpg', 'android', NULL, NULL);
 
 -- --------------------------------------------------------
 

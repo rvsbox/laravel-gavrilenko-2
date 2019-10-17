@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class People extends Model
 {
-    protected $table = 'peoples'; // переопределение скрытого свойства
+    // переопределение скрытого свойства
+    protected $table = 'peoples';
 }
