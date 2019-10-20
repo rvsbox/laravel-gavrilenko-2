@@ -13,8 +13,8 @@ class ContactFormController extends Controller
     {
         // сообщения о правилах заполнения формы
         $messages = [
-            'required' => "test 1 :attribute",
-            'email' => "test 2 :attribute",
+            'required' => "Поле :attribute обязательно к заполнению.",
+            'email' => "Поле :attribute должно соответствовать email адресу."
         ];
 
         // валидация данных. Используется если в параметрах функции execute не указывать объект
