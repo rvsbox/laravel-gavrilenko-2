@@ -12,6 +12,17 @@
                                 <div class="col-lg-5 col-sm-7">
                                     <div class="top_left_cont zoomIn wow animated">
                                         {!! $page->text !!}
+                                        {{-- в IndexController получили полный доступ к таблице pages: $pages = Page::all(); --}}
+
+                                        {{-- #attributes: array:7 [▼--}}
+                                        {{--     "id" => 1--}}
+                                        {{--     "name" => "home"--}}
+                                        {{--     "alias" => "home"--}}
+                                        {{--     "text" => """--}}
+                                        {{--     "images" => "main_device_image.png"--}}
+                                        {{--     "created_at" => null--}}
+                                        {{--     "updated_at" => null--}}
+                                        {{--  ]--}}
                                         <a href="{{ route('page',array('alias'=>$page->alias))}}" class="read_more2">Read
                                             more</a></div>
                                 </div>

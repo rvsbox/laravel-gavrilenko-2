@@ -26,6 +26,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('/', ['uses' => 'ContactFormController@execute','as'=>'form']);
 
+    // параметр {alias} будет передаваться в качестве первого аргумента метода execute в PageController
     Route::get('/page/{alias}', ['uses' => 'PageController@execute', 'as' => 'page']);
 
     // аутентификация пользователя

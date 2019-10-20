@@ -25,10 +25,16 @@ class IndexController extends Controller
 
         $menu = [];
 
+        // выборка из двух первых разделов после меню
         foreach ($pages as $page) {
             $item = ['title' => $page->name, 'alias' => $page->alias];
             array_push($menu, $item);
         }
+
+        // содержимое массива в $menu:
+        // 0 => array ["title" => "home", "alias" => "home"]
+        // 1 => array ["title' => "about us", "alias" => "aboutUs"]
+        //dd($menu);
 
         $item = ['title' => 'Services', 'alias' => 'service']; // alias - псевдоним. См id в верстке
         array_push($menu, $item);
