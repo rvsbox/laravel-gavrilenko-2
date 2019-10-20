@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ContactFormMail extends Mailable
 {
@@ -30,6 +29,7 @@ class ContactFormMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.contact');
+        // метод subject() создает название 'Question' для темы письма
+        return $this->subject('Question')->view('contact.email');
     }
 }

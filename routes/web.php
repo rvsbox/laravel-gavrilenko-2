@@ -24,7 +24,7 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'home',
     ]);
 
-    Route::post('/', ['uses' => 'ContactFormController@execute']);
+    Route::post('/', ['uses' => 'ContactFormController@execute','as'=>'form']);
 
     Route::get('/page/{alias}', ['uses' => 'PageController@execute', 'as' => 'page']);
 
