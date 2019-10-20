@@ -139,24 +139,24 @@
         @endif
 
         <!-- Portfolio Wrapper -->
-        <div class="isotope fadeInLeft animated wow" style="position: relative; overflow: hidden; height: 480px;"
+            <div class="isotope fadeInLeft animated wow" style="position: relative; overflow: hidden; height: 480px;"
                  id="portfolio_wrapper">
 
             @foreach($portfolios as $item)
 
                 <!-- Portfolio Item -->
-                <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
-                     class="portfolio-item one-four   {{ $item->filter }} isotope-item">
-                    <div class="portfolio_img"> {{ Html::image('assets/img/'.$item->images,$item->name)}} </div>
-                    <div class="item_overlay">
-                        <div class="item_info">
-                            <h4 class="project_name">{{ $item->name }}</h4>
+                    <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
+                         class="portfolio-item one-four   {{ $item->filter }} isotope-item">
+                        <div class="portfolio_img"> {{ Html::image('assets/img/'.$item->images,$item->name)}} </div>
+                        <div class="item_overlay">
+                            <div class="item_info">
+                                <h4 class="project_name">{{ $item->name }}</h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--/Portfolio Item -->
+                    <!--/Portfolio Item -->
 
-            @endforeach
+                @endforeach
 
             </div>
             <!--/Portfolio Wrapper -->
@@ -254,9 +254,6 @@
                     <div class="form">
 
                         <form action="{{ route('home')}}" method="post">
-                            {{-- формируется скрытое поле для защиты формы. См через браузер эту строку --}}
-                            @csrf
-
                             <input class="input-text" type="text" name="name" value="Your Name *"
                                    onFocus="if(this.value==this.defaultValue)this.value='';"
                                    onBlur="if(this.value=='')this.value=this.defaultValue;">
@@ -267,6 +264,9 @@
                                       onFocus="if(this.value==this.defaultValue)this.value='';"
                                       onBlur="if(this.value=='')this.value=this.defaultValue;">Your Message *</textarea>
                             <input class="input-btn" type="submit" value="send message">
+
+                            {{-- формируется скрытое поле для защиты формы. См через браузер эту строку --}}
+                            @csrf
                         </form>
 
                     </div>

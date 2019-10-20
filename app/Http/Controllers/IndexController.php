@@ -9,7 +9,6 @@ use App\Models\Portfolio;
 use App\Models\Service;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
 {
