@@ -95,6 +95,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 });
 
+// generation (php artisan make:auth)
 Auth::routes();
 
+// generation (php artisan make:auth)
 Route::get('/home', 'HomeController@index')->name('home');
