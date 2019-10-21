@@ -2,7 +2,7 @@
 
     {{-- открыть форму --}}
     {{-- см видое 11-30:45 --}}
-    {{-- ссылка на редактироване записи --}}
+    {{-- ссылка на редактирование записи --}}
     {!! Form::open(['url' => route('pagesAdd'),'class'=>'form-horizontal','method'=>'POST','enctype'=>'multipart/form-data']) !!}
 
 
