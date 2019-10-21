@@ -24,8 +24,9 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'home',
     ]);
 
-    Route::post('/', ['uses' => 'ContactFormController@execute','as'=>'form']);
+    Route::post('/', ['uses' => 'ContactFormController@execute', 'as' => 'form']);
 
+    // параметр {alias} будет передаваться в качестве первого аргумента метода execute в PageController
     Route::get('/page/{alias}', ['uses' => 'PageController@execute', 'as' => 'page']);
 
     // аутентификация пользователя
@@ -39,7 +40,14 @@ Route::group(['middleware' => 'web'], function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     // главная страница панели администратора
+    // laravel-gavrilenko-2.loc/admin
     Route::get('/', function () {
+
+        if (view()->exists('admin.index')) {
+            $data = ['title' => 'Панель администратора'];
+
+            return view('admin.index', $data);
+        }
 
     });
 
@@ -87,3 +95,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 });
 
+// generation (php artisan make:auth)
+Auth::routes();
+
+// generation (php artisan make:auth)
+Route::get('/home', 'HomeController@index')->name('home');
