@@ -27,5 +27,6 @@ class PagesController extends Controller
         }
 
         abort(404);
+
     }
 }
