@@ -8,6 +8,9 @@ class PagesAddController extends Controller
 {
     public function execute(Request $request)
     {
+        if ($request->isMethod('post')) {
+            dd($request);
+        }
 
         if (view()->exists('admin.pages_add')) {
 
