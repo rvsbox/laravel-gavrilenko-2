@@ -37,10 +37,10 @@ Route::group(['middleware' => 'web'], function () {
 // /admin/page
 // /admin/service
 // /admin/portfolio
-// laravel-gavrilenko-2.loc/admin
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     // главная страница панели администратора
+    // laravel-gavrilenko-2.loc/admin
     Route::get('/', function () {
 
         if (view()->exists('admin.index')) {
