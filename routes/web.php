@@ -24,7 +24,7 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'home',
     ]);
 
-    Route::post('/', ['uses' => 'ContactFormController@execute','as'=>'form']);
+    Route::post('/', ['uses' => 'ContactFormController@execute', 'as' => 'form']);
 
     // параметр {alias} будет передаваться в качестве первого аргумента метода execute в PageController
     Route::get('/page/{alias}', ['uses' => 'PageController@execute', 'as' => 'page']);
@@ -41,6 +41,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     // главная страница панели администратора
     Route::get('/', function () {
+
+        if (view()->exists('admin.index')) {
+            $data = ['title' => 'Панель администратора'];
+
+            return view('admin.index', $data);
+        }
 
     });
 
@@ -87,7 +93,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         ]);
     });
 });
-
 
 Auth::routes();
 
