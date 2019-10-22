@@ -17,6 +17,11 @@ class PagesAddController extends Controller
             // получить нужную информацию из $request
             $input = $request->except('_token');
 
+            $massages = [
+                'required'=>'Поле :attribute обязательно к заполнению.',
+                'unique'=>'Поле :attribute должно быть уникальным.'
+            ];
+
             // провалидировать данные из формы
             $validator = Validator::make($input, [
 
@@ -24,7 +29,7 @@ class PagesAddController extends Controller
                 'name' => 'required|max:255',
                 'alias' => 'required|unique:pages|max:255',
                 'text' => 'required',
-            ]);
+            ], $massages);
 
             // проверка
             if ($validator->fails()) {
