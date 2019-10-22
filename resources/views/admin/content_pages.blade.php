@@ -30,9 +30,8 @@
                         {{-- открыли форму --}}
                         {{-- ссылка на редактироване записи --}}
                         {!! Form::open(['url'=>route('pagesEdit',['page'=>$page->id]), 'class'=>'form-horizontal','method' => 'POST']) !!}
-                        {{-- подмена запроса, тк браузер не может отправить запрос Delete. См видео 11-20:10 --}}
-                        {{-- скрытое поле hidden с атрибутом: имя - action, значение - delete --}}
-                        {!! Form::hidden('action','delete') !!}
+                        {{-- формируется строка: <input type="hidden" name="_method"  value="DELETE"> --}}
+                        {{ method_field('DELETE') }}
                         {{-- отображение кнопки --}}
                         {!! Form::button('Удалить',['class'=>'btn btn-danger','type'=>'submit']) !!}
 

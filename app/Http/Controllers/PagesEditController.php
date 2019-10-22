@@ -13,6 +13,13 @@ class PagesEditController extends Controller
 
         //$page = Page::find($id);
 
+        // удаление записи из БД
+        if ($request->isMethod('delete')) {
+            $page->delete();
+
+            return redirect('admin')->with('status', 'Страница удалена');
+        }
+
         if ($request->isMethod('post')) {
 
             // вытаскиваем данные, которые хранятся в полях $request
@@ -59,7 +66,6 @@ class PagesEditController extends Controller
             if ($page->update()) {
                 return redirect('admin')->with('status', 'Страница обновлена.');
             }
-
         }
 
         // получим значение из БД конкретной записи
