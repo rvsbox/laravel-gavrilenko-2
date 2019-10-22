@@ -4,7 +4,7 @@
 
         @if($k%2 == 0)
 
-            <section id="home" class="top_cont_outer">
+            <section id="{{ $page->alias }}" class="top_cont_outer">
                 <div class="hero_wrapper">
                     <div class="container">
                         <div class="hero_section">
@@ -38,7 +38,7 @@
 
         @else
 
-            <section id="aboutUs"><!--Aboutus-->
+            <section id="{{ $page->alias }}"><!--Aboutus-->
                 <div class="inner_wrapper">
                     <div class="container">
                         <h2>{{ $page->name}}</h2>
