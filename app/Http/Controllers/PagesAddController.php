@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use App\Models\Page;
 
 class PagesAddController extends Controller
 {
@@ -35,7 +36,7 @@ class PagesAddController extends Controller
 
             // проверить, содержится ли файл в объекте $request. Что если пользователь его не загрузил
             // hasFile() возваращает истину если файл содержиться в объекте $request
-            if($request->hasFile('images')){
+            if ($request->hasFile('images')) {
 
                 // перед сохранением информации в БД, необходимо сохранить изображение в определенный каталог,
                 // которое отправляется на сервер
@@ -50,11 +51,25 @@ class PagesAddController extends Controller
             // move() - сохраняет файл в указанную директорию
             // public_path() - возвращает путь к публичной директории фреймворка Laravel, те каталог public
             // во втором аргументе public_path() указываем имя сохраняемого файла
-            $file->move(public_path().'/assets/img',$input['images']);
+            $file->move(public_path().'/assets/img', $input['images']);
 
+            // сохранение информации в БД
+            $page = new Page();
+
+            // fill() заполняет поля модели данными
+            // в модели Page необходимо указать список полей, разрешенных к автозаполнению, те name, text, alias, images
+            // данные из $input будут использоваться для свойств модели Page
+            $page->fill($input);
+
+            // альтернатива, но не хорошая практика, в ручную эффективней
+            // unguard() - разрешает автозаполнение, абсолютно любого поля интересующей модели, те снимаем все ограничения
+            //$page->unguard();
+
+            // обращаемся к модели Page и вызываем метод save(), те сохраняем текущее состояние модели в таблицу pages БД
+            if ($page->save()) {
+                return redirect('admin')->with('status', 'Страница добавлена');
+            }
         }
-
-        dd($input);
 
         if (view()->exists('admin.pages_add')) {
 
@@ -66,6 +81,5 @@ class PagesAddController extends Controller
         }
 
         abort(404);
-        
     }
 }
