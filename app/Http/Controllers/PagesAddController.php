@@ -9,6 +9,7 @@ class PagesAddController extends Controller
 {
     public function execute(Request $request)
     {
+
         if ($request->isMethod('post')) {
 
             // исключить параметр _token
@@ -32,16 +33,28 @@ class PagesAddController extends Controller
                 return redirect()->route('pagesAdd')->withErrors($validator)->withInput();
             }
 
-            // перед сохранением информации в БД, необходимо сохранить изображение в определенный каталог,
-            // которое отправляется на сервер
-            // в переменной $file будет располагаться класс UploadFile, те получим экземпляр объекта UploadFile
-            $file = $request->file('images');
+            // проверить, содержится ли файл в объекте $request. Что если пользователь его не загрузил
+            // hasFile() возваращает истину если файл содержиться в объекте $request
+            if($request->hasFile('images')){
 
-            // очистка от лишней информации в ячейке images
-            $input['images'] = $file->getClientOriginalName();
+                // перед сохранением информации в БД, необходимо сохранить изображение в определенный каталог,
+                // которое отправляется на сервер
+                // в переменной $file будет располагаться класс UploadFile, те получим экземпляр объекта UploadFile
+                $file = $request->file('images');
 
-            dd($input);
+                // очистка от лишней информации в ячейке images
+                $input['images'] = $file->getClientOriginalName();
+            }
+
+            // сохранение файла в определенный каталог проекта
+            // move() - сохраняет файл в указанную директорию
+            // public_path() - возвращает путь к публичной директории фреймворка Laravel, те каталог public
+            // во втором аргументе public_path() указываем имя сохраняемого файла
+            $file->move(public_path().'/assets/img',$input['images']);
+
         }
+
+        dd($input);
 
         if (view()->exists('admin.pages_add')) {
 
@@ -53,5 +66,6 @@ class PagesAddController extends Controller
         }
 
         abort(404);
+        
     }
 }
