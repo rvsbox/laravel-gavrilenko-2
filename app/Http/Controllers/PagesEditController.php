@@ -25,6 +25,7 @@ class PagesEditController extends Controller
 
                 // правила валидации. См видео 14-4:10
                 'name' => 'required|max:255',
+                // $input['id'] - исключение записи из поиска, те получим идентификатор который редактируем
                 'alias' => 'required|max:255|unique:pages,alias,'.$input['id'],
                 'text' => 'required',
             ]);
@@ -34,7 +35,6 @@ class PagesEditController extends Controller
                     ->route('pagesEdit',['page'=>$input['id']])
                     ->withErrors($validator);
             }
-            
         }
 
         // получим значение из БД конкретной записи
