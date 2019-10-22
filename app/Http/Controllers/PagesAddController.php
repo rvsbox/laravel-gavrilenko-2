@@ -9,7 +9,11 @@ class PagesAddController extends Controller
     public function execute(Request $request)
     {
         if ($request->isMethod('post')) {
-            dd($request);
+
+            // исключить параметр _token
+            // получить нужную информацию из $request
+            $input = $request->except('_token');
+            dd($input);
         }
 
         if (view()->exists('admin.pages_add')) {
