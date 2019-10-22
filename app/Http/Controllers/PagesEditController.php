@@ -15,7 +15,14 @@ class PagesEditController extends Controller
         // получим значение из БД конкретной записи
         $old = $page->toArray();
 
-        dd($old);
+        if (view()->exists('admin.pages_edit')) {
 
+            $data = [
+                'title' => 'Редактирование страницы - '.$old['name'],
+                'data'=> $old
+            ];
+
+            return view('admin.pages_edit', $data);
+        }
     }
 }
