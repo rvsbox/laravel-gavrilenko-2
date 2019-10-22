@@ -37,7 +37,7 @@ class PagesAddController extends Controller
             // в переменной $file будет располагаться класс UploadFile, те получим экземпляр объекта UploadFile
             $file = $request->file('images');
 
-            dd($file);
+            dd($input);
         }
 
         if (view()->exists('admin.pages_add')) {
