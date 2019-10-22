@@ -7,12 +7,15 @@ use App\Models\Page;
 
 class PagesEditController extends Controller
 {
-    public function execute($id)
+    public function execute(Page $page, Request $request)
     {
 
-        $page = Page::find($id);
+        //$page = Page::find($id);
 
-        dd($page);
+        // получим значение из БД конкретной записи
+        $old = $page->toArray();
+
+        dd($old);
 
     }
 }
