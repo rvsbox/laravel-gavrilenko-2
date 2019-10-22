@@ -37,6 +37,9 @@ class PagesAddController extends Controller
             // в переменной $file будет располагаться класс UploadFile, те получим экземпляр объекта UploadFile
             $file = $request->file('images');
 
+            // очистка от лишней информации в ячейке images
+            $input['images'] = $file->getClientOriginalName();
+
             dd($input);
         }
 
