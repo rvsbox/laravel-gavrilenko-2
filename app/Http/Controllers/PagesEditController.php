@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\Page;
 
-
 class PagesEditController extends Controller
 {
     public function execute(Page $page, Request $request)
@@ -30,11 +29,37 @@ class PagesEditController extends Controller
                 'text' => 'required',
             ]);
 
-            if($validator->fails()) {
-                return redirect()
-                    ->route('pagesEdit',['page'=>$input['id']])
-                    ->withErrors($validator);
+            if ($validator->fails()) {
+                return redirect()->route('pagesEdit', ['page' => $input['id']])->withErrors($validator);
             }
+
+            // проверка загрузки файла на сервер
+            // см видео 15-12:00
+            if ($request->hasFile('images')) {
+
+                // в переменную $file сохраняем объект класса UploadedFile для конкретного загруженного файла
+                $file = $request->file('images');
+                // копирование файла в определенную директорию на сервере
+                $file->move(public_path().'/assets/img', $file->getClientOriginalName());
+                // записываем в ячейку imgages имя файла
+                $input['images'] = $file->getClientOriginalName();
+            } else {
+                // когда пользователь не загружает новое изображение, а использует старое
+                // $input['old_images'] - скрытое поле с именем файла, которое было загружено ранее
+                $input['images'] = $input['old_images'];
+            }
+
+            // удаление лишнего из массива $input, те из ячеки old_images
+            unset($input['old_images']);
+
+            // заново заполняем поля модели Page, но в качестве значений используем содержимое массива $input
+            $page->fill($input);
+
+            // пересохранение информации в БД
+            if ($page->update()) {
+                return redirect('admin')->with('status', 'Страница обновлена.');
+            }
+
         }
 
         // получим значение из БД конкретной записи
