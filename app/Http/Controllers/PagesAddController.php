@@ -32,7 +32,12 @@ class PagesAddController extends Controller
                 return redirect()->route('pagesAdd')->withErrors($validator)->withInput();
             }
 
-            dd($input);
+            // перед сохранением информации в БД, необходимо сохранить изображение в определенный каталог,
+            // которое отправляется на сервер
+            // в переменной $file будет располагаться класс UploadFile, те получим экземпляр объекта UploadFile
+            $file = $request->file('images');
+
+            dd($file);
         }
 
         if (view()->exists('admin.pages_add')) {
